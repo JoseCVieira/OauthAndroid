@@ -8,7 +8,7 @@
  */
 
 namespace OAuth2ServerExamples\Repositories;
-include __DIR__."/../../../vendor/autoload.php";
+include __DIR__."/../../../../vendor/autoload.php";
 
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Repositories\UserRepositoryInterface;
@@ -27,14 +27,18 @@ class UserRepository implements UserRepositoryInterface
     ) {
 		$connection = $_SESSION['conn'];
 		//queries users from database resource
-		$result = $connection->query('select name, salt, password from users;');
+		$result = $connection->query('select * from users;');
 		//verifies username and password
 		foreach($result as $row) {
 		    $salt = $row['salt'];
 		    $user = $row['name'];
 		    $pass = $row['password'];
+		    $id = $row['id'];
 	            if ($username === $user && $pass === md5($salt . $password)) {
-            		return new UserEntity();
+            		$new_user = new UserEntity();
+			$new_user->setIdentifier($id);
+			return $new_user;
+			//return new UserEntity();
         	    }
     	        }
 		
