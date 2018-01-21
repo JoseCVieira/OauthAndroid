@@ -1,7 +1,8 @@
 # proj-csc
 
 Requerimentos:
-    Apache2 - configurar apache2.conf com:
+    Apache2 
+           - configurar apache2.conf com:
                          <      exemplo        >
               <Directory </home/user/Documents/>project2/src/public>
                     Options Indexes FollowSymLinks
@@ -15,7 +16,8 @@ Requerimentos:
 
 
     php
-    mysql - correr script para inserir tabelas
+    mysql 
+          - correr script para inserir tabelas
             user da DB e respetiva pass em include/db_access.php
     
     
