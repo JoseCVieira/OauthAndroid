@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS clients;
+
+
 CREATE TABLE users (
     id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL DEFAULT '',
@@ -7,3 +11,15 @@ CREATE TABLE users (
 
     PRIMARY KEY (id)
 );
+
+CREATE TABLE clients (
+    client_id VARCHAR(255) NOT NULL DEFAULT '',
+    client_secret VARCHAR(255) NOT NULL DEFAULT '',
+    name	VARCHAR(255) NOT NULL DEFAULT '',
+    redirect_uri VARCHAR(255) NOT NULL DEFAULT '', 
+    is_confidential VARCHAR(255) NOT NULL DEFAULT '',
+
+    PRIMARY KEY (client_id)
+);
+
+
