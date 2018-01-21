@@ -1,6 +1,7 @@
 <?php
 
-
+require __DIR__."/../include/db_access.php";
+include __DIR__ . '/../../vendor/autoload.php';
 
 use League\OAuth2\Server\ResourceServer;
 
@@ -14,7 +15,7 @@ use Slim\App;
 
 
 
-include __DIR__ . '/../../vendor/autoload.php';
+
 
 
 
@@ -64,71 +65,16 @@ $app->get(
 
     function (ServerRequestInterface $request, ResponseInterface $response) use ($app) {
 
-        $users = [
-
-            [
-
-                'id'    => 123,
-
-                'name'  => 'Alex',
-
-                'email' => 'alex@thephpleague.com',
-
-            ],
-
-            [
-
-                'id'    => 124,
-
-                'name'  => 'Frank',
-
-                'email' => 'frank@thephpleague.com',
-
-            ],
-
-            [
-
-                'id'    => 125,
-
-                'name'  => 'Phil',
-
-                'email' => 'phil@thephpleague.com',
-
-            ],
-
-        ];
+		$user_id = $request->getAttribute('oauth_user_id');
+        $connection = $_SESSION['conn'];
+		$result = $connection->query("Select name from users where id = $user_id");
+		foreach($result as $row){
+			$user_name = $row['name'];
+		}
 
 
 
-        // If the access token doesn't have the `basic` scope hide users' names
-
-        if (in_array('basic', $request->getAttribute('oauth_scopes')) === false) {
-
-            for ($i = 0; $i < count($users); $i++) {
-
-                unset($users[$i]['name']);
-
-            }
-
-        }
-
-
-
-        // If the access token doesn't have the `email` scope hide users' email addresses
-
-        if (in_array('email', $request->getAttribute('oauth_scopes')) === false) {
-
-            for ($i = 0; $i < count($users); $i++) {
-
-                unset($users[$i]['email']);
-
-            }
-
-        }
-
-
-
-        $response->getBody()->write(json_encode($users));
+        $response->getBody()->write(json_encode($user_name));
 
 
 
