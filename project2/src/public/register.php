@@ -5,31 +5,27 @@
 
 include "../include/db_access.php";
 
+$allow_registration = true;
+$result = $connection->query('select * from users;');
+foreach($result as $row){
+	$name = $row[name];
+	if($name === $_POST['requester_name']){
+		$allow_registration = false;
+	}
+}
+if($allow_registration === true){
+	$stmt = $connection->prepare('INSERT INTO users (name,password,salt, created) ' . 'VALUES (:name, :password, :salt, NOW());');
 
-$stmt = $connection->prepare('INSERT INTO users (name,password,salt, created) ' . 'VALUES (:name, :password, :salt, NOW());');
+	$pass = $_POST['requester_pass']; // password 
+	$salt = uniqid(mt_rand(), true);
+	$hash_md5 = md5($salt . $pass); 
 
-$pass = $_POST['requester_pass']; // password 
-$salt = uniqid(mt_rand(), true);
-$hash_md5 = md5($salt . $pass); 
-
-
-$stmt->execute(array( 'name' => $_POST['requester_name'], 'password' => $hash_md5, 'salt' => $salt));
-
-//$id = $db->lastInsertId();
-$result = $connection->query('select salt from users where users.id = 1');
-
- foreach($result as $row) {
-        $r_number = $row['salt'];
-        echo("<p>".$r_number . "</p>");
-    }
-
-//$key = $store->updateConsumer($_POST, $id, true);
-
-//$c = $store->getConsumer($key, $id);
+	$stmt->execute(array( 'name' => $_POST['requester_name'], 'password' => $hash_md5, 'salt' => $salt));
+	echo($_POST[requester_name]." Successfully registered");
+}else{
+echo("Username already in use");
+}
 ?>
 
 <body>
-<p><strong>Save these values!</strong></p>
-<?php echo('Retrieved Password:'. md5($salt . $pass));?>
-</body>
 </html>
