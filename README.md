@@ -1,22 +1,13 @@
 # proj-csc
 
-Requerimentos:
+CSC - Aplicação Android
+
+project2 - Web Server API
     
-    Apache2 - configurar apache2.conf com:
-                         <      exemplo        >
-              <Directory </home/user/Documents/>project2/src/public>
-                    Options Indexes FollowSymLinks
-                    AllowOverride All
-                    Require all granted
-              </Directory>
-           - configurar sites-available/000-default.conf com:
-                        <  igual ao anterior  >
-           DocumentRoot </home/user/Documents/>project2/src/public
-
-
-    php
-    mysql 
-          - correr script para inserir tabelas
-            user da DB e respetiva pass em include/db_access.php
+        necessário configurar apache com o DocumentRoot em /etc/apache2/sites-available/000-default.conf
+        necessário configurar apache com o directory em /etc/apache2/apache2.conf
+    De acordo com o report
+    
+report - Indicações de desenvolvimento
     
     
