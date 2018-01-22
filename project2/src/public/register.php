@@ -21,9 +21,9 @@ if($allow_registration === true){
 	$hash_md5 = md5($salt . $pass); 
 
 	$stmt->execute(array( 'name' => $_POST['requester_name'], 'password' => $hash_md5, 'salt' => $salt));
-	echo($_POST[requester_name]." Successfully registered");
+	echo("@1@");
 }else{
-echo("Username already in use");
+echo("@0@");
 }
 ?>
 
