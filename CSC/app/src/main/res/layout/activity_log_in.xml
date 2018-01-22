@@ -58,8 +58,7 @@ tools:context="istecnico.csc.LogIn">
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="address"
-            android:inputType="textPersonName"
-            android:text="192.168.56.3" />
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/userID"
@@ -75,8 +74,7 @@ tools:context="istecnico.csc.LogIn">
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="username"
-            android:inputType="textPersonName"
-            android:text="alex" />
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/pwText"
@@ -92,8 +90,7 @@ tools:context="istecnico.csc.LogIn">
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="password"
-            android:inputType="textPassword"
-            android:text="whisky" />
+            android:inputType="textPassword" />
 
         <Button
             android:text="Log In"

@@ -146,7 +146,7 @@ public class LogIn extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params=new HashMap<String,String>();
                 params.put("grant_type","password");
-                params.put("client_id","myawesomeapp");
+                params.put("client_id","projetocsc");
                 params.put("client_secret", "abc123");
                 params.put("username",username);     //alex
                 params.put("password",userpass);     //whisky
