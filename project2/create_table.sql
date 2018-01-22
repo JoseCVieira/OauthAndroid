@@ -23,3 +23,4 @@ CREATE TABLE clients (
 );
 
 
+insert into clients values("projetocsc", "$2y$10$BiXbl/B3IzpRroX3f07R1uoa7Wk649IjBbnyTgIHgtpBHsI2CJWa.", "Projecto CSC", "http://foo//bar", "true");
